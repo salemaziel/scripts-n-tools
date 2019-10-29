@@ -1,0 +1,22 @@
+on current wholehousewater server
+sudo mysqldump -u root -p $(WP_database) > /tmp/WP_database.sql
+
+on google cloud server
+rsync -avzP wpms@74.207.242.237:/tmp/WP_database.sql /tmp
+
+
+tar -cvzf wholehousewater.tar.gz .
+
+
+rsync -avP wpms@74.207.242.237:/home/wpms/webapps/wholehousewaterfiltration/wholehousewater.tar.gz /var/www/html
+
+
+
+mysqldump -u whwfsc -p whwfsc > whwfsc-20190619.sql
+
+gz60EfG9:sbx8dNBJ2+?{jhH,qfHuY,r
+
+
+
+
+

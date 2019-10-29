@@ -1,0 +1,232 @@
+
+cryptostorm
+
+WireGuard®
+For details on our WireGuard setup, see our blog post here.
+Scroll down for instructions.
+PAID - full speed, all nodes   manage your keys here
+Your cryptostorm token (or it's SHA512 hash):
+
+Your wireguard public key:
+
+
+FREE - throttled speed, one node
+Your wireguard public key:
+
+
+WARNING: WireGuard is not yet complete. You should not rely on it. It has not undergone proper degrees of security auditing and the protocol is still subject to change.
+How to use WireGuard
+WireGuard works on Linux (including Android), BSD, MacOS/iOS, and Windows.
+
+Be sure to read our WireGuard blog post for information on connection limits and token expirations.
+Also, this other article responds to some (mostly false) information being spread about WireGuard's privacy.
+Server public keys
+If you're not going to use the script below that generates all of the configs, or if you only want to use a single server, you will need to know that server's public key.
+Below is a chart of each node and it's public key. WireGuard would refer to these servers as "endpoints", so if the app you're using asks for the endpoint, you would use the host names below.
+Node 	Host name 	Public key
+Paris 	paris.cstorm.is 	8yHSuRSwQo9cV16WeoXs70nHD+ContK1R/Hw9a1N5Fc=
+Romania 	romania.cstorm.is 	6JjesN/UEaJdyBSkp1oJzqmsTPqB5Dwmv+iMRkKbsRM=
+Denmark 	denmark.cstorm.is 	tNXGw9Hk78bHAdGZqC304geIRllOy+PSEHx+GAnSb0c=
+Netherlands 	netherlands.cstorm.is 	Nmcl36PHFmDDLyJP/AJtw6vUxIx4zMav/EiJ+TPeelQ=
+Rome 	rome.cstorm.is 	jZuKO6gd811FT3PKRTYF8sbqYyBGR7R2XlgE+Nnrm3M=
+South Korea 	sk.cstorm.is 	443XPAL0fYNtD9zFI7S8XcoB3diY68jKIbh6oB9T3Rk=
+Latvia 	latvia.cstorm.is 	tmmOD6BSpZeN8U7MCiCuWKoPN2E0qSVWtY1dTuByejA=
+England 	england.cstorm.is 	lbG7/pJR64ii6ZxdMnmPOtOYSDrcQQyppNVQDruyl3A=
+Finland 	finland.cstorm.is 	CsDyFuVn2/C5WMQgIdG6Eahns8LK7TAJ+QW8IWS+P0A=
+Sweden 	sweden.cstorm.is 	OKnEZSODUaUWL81+r/l5cbHJbfvwJAX0SgTqXQXL60E=
+Portugal 	lisbon.cstorm.is 	fK5tUIOmecV9JLmauFUalasl+b4CXXEzgEHGyiOqsTA=
+Poland 	poland.cstorm.is 	Ib3q3CLZRs19zG6YeQsUnI9WlFVRsnF2aZ2cON4zgRk=
+Switzerland 	switzerland.cstorm.is 	kqdk0iAv2B7OVEd0BNv1XZBk40lpvCWkLMUnF8EIo20=
+Moldova 	moldova.cstorm.is 	1Oo4+CgZKKNsWOVm5ZSyxUGg67Ro5RLZU5Jg2NUWnAg=
+DE - Dusseldorf 	dusseldorf.cstorm.is 	zg3dQMbmxdIgvtLgt2+G9S1qXA8cnyPSXzkEXnvjU3Y=
+DE - Frankfurt 	frankfurt.cstorm.is 	e4eYphS0h806X85fzrUHHuD9Jl4dJqYhkyl4lYnuFwI=
+CA - Montreal 	montreal.cstorm.is 	w8+i77Jy0/rVVXe3jGa93Yu1nbAEZiysTJb9T4QsCiw=
+CA - Vancouver 	vancouver.cstorm.is 	cXqdLj/fZSx5VN+Q0PTkRRgGrkEURhsnayWK23geRE0=
+US - Seattle, WA 	seattle.cstorm.is 	3bHLNdTY/9AETg9OKgTsab+SjRitGqB+o4BH4gkzux8=
+US - Washington, D.C. 	dc.cstorm.is 	Vspvv1C5C/JAAcoysAdGzHUz98V0vYXLl8a5Yv3Xa3g=
+US - New York City, NY 	newyork.cstorm.is 	UEbUD6RbRCnbOM2gKH7HiSZJK9+M1OlKkza+7MD2sDg=
+US - Oregon 	oregon.cstorm.is 	lUN2Vqs+CswowhSS81X0cdkfMZe3hLnr0HznBegvilc=
+US - Los Angeles 	la.cstorm.is 	O3XwQl4+/ZIrqXJgKiXWWK+26+z+KHYL1GaCTX6/TSg=
+US - North Carolina 	nc.cstorm.is 	s2ozcv7uGcvryYUs460wUE6xeouR+I2kqOjJvag91zI=
+US - Atlanta, GA 	atlanta.cstorm.is 	EZZUsR5l+Oe47s5900Q1JamvMYF6HB2Dbs6+ZAhXAzU=
+US - Dallas, TX 	dallas.cstorm.is 	qrZ3+Jp0y2+eYlOE0heVBfFzcHhuWJ31Y5UF/mHQLRA=
+US - Las Vegas, NV 	vegas.cstorm.is 	wwQ63AoaSxBm1K9zCwl2XSmvwI8ADIx3Qponm1+AbWQ=
+US - Chicago, IL 	chicago.cstorm.is 	ZQlqH2OjXnI7vhrc4HwSv9l1i8riD78p2hhmz+7bCj4=
+US - Florida 	florida.cstorm.is 	s2ozcv7uGcvryYUs460wUE6xeouR+I2kqOjJvag91zI=
+US - Maine 	maine.cstorm.is 	lUN2Vqs+CswowhSS81X0cdkfMZe3hLnr0HznBegvilc=
+Linux
+
+To add WireGuard support to your Linux system, follow the installation instructions for your distribution at https://www.wireguard.com/install/.
+If your distribution isn't listed on that page, then you probably need to compile from source. Instructions for that are also on that page.
+Once you have a working `wg` command, you will need to generate your private/public keys.
+To do that, enter these commands:
+
+df@x:~$ su
+Password:
+root@x:/home/df# mkdir /etc/wireguard
+root@x:/home/df# cd /etc/wireguard
+root@x:/etc/wireguard# umask 077
+root@x:/etc/wireguard# wg genkey > privatekey
+root@x:/etc/wireguard# wg pubkey < privatekey > publickey
+root@x:/etc/wireguard# cat publickey
+99xtn2Q+eiLgxwEpNraESJcFtrkO4AQDfHwZj6hwemk=
+
+Copy whatever that last line is for you and paste it into the box at the top of this page, under "Your wireguard public key:".
+Enter your cryptostorm token (or it's SHA512 hash) into the box above that, then click the "ADD KEY" button.
+This page will then show you the pre-shared key (PSK) and IP that you will need in your WireGuard configs. Each WireGuard key you generate will have a different PSK/IP.
+To generate all of the configs, use the script at https://cryptostorm.is/wg_confgen.txt.
+For example, if after entering my cryptostorm token and WireGuard public key, this page gave me the PSK No2ax6F0iFOXjFV2WxpSNXdvgfbP+NSuV/We2R5QGUk= and the IP 10.10.53.129
+then I would run the commands:
+
+root@x:/etc/wireguard# wget https://cryptostorm.is/wg_confgen.txt -Oconfgen.sh
+root@x:/etc/wireguard# chmod +x confgen.sh
+root@x:/etc/wireguard# ./confgen.sh No2ax6F0iFOXjFV2WxpSNXdvgfbP+NSuV/We2R5QGUk= 10.10.53.129
+Configs created in /etc/wireguard/
+
+Like confgen.sh said, the configs for every node will now be in /etc/wireguard/
+
+root@x:/etc/wireguard# ls
+confgen.sh          cs-florida.conf    cs-nc.conf           cs-sweden.conf
+cs-atlanta.conf     cs-frankfurt.conf  cs-netherlands.conf  cs-switzerland.conf
+cs-chicago.conf     cs-sk.conf         cs-newyork.conf      cs-vancouver.conf
+cs-dallas.conf      cs-la.conf         cs-oregon.conf       cs-vegas.conf
+cs-dc.conf          cs-latvia.conf     cs-paris.conf        privatekey
+cs-denmark.conf     cs-lisbon.conf     cs-poland.conf       publickey
+cs-dusseldorf.conf  cs-maine.conf      cs-romania.conf
+cs-england.conf     cs-moldova.conf    cs-rome.conf
+cs-finland.conf     cs-montreal.conf   cs-seattle.conf
+
+To start WireGuard, pick a node and run the command (using the Switzerland node in this example):
+
+root@x:/etc/wireguard# wg-quick up cs-switzerland
+[#] ip link add cs-switzerland type wireguard
+[#] wg setconf cs-switzerland /dev/fd/63
+[#] ip address add 10.10.53.129 dev cs-switzerland
+[#] ip link set mtu 1420 up dev cs-switzerland
+[#] resolvconf -a tun.cs-switzerland -m 0 -x
+[#] wg set cs-switzerland fwmark 51820
+[#] ip -4 route add 0.0.0.0/0 dev cs-switzerland table 51820
+[#] ip -4 rule add not fwmark 51820 table 51820
+[#] ip -4 rule add table main suppress_prefixlength 0
+
+That's it! You can verify that you're connected with:
+
+root@x:/etc/wireguard# wget -qO- https://cryptostorm.is/test
+81.17.31.40 IS cryptostorm
+
+And you can check for DNS leaks with:
+
+root@x:/etc/wireguard# host whoami.cryptostorm.is
+whoami.cryptostorm.is has address 81.17.31.34
+
+That's the Switzerland server's DNS IP, so it's not leaking. A list of all of our DNS IPs is available at https://cryptostorm.is/dns.txt.
+
+Android
+
+Install the WireGuard app from F-Droid or Google Play Store:
+
+Open up the WireGuard app and click the blue button in the bottom right then go to "Create from scratch"
+
+
+In the next screen, enter something for the name. It doesn't matter what, it's just to help you remember which node you're connecting to.
+Then, click the blue "GENERATE" to generate your private and public keys.
+Next, click the public key to copy it to your clipboard.
+Switch back to this page and paste your public key into the box under "Your wireguard public key:", at the top of this page.
+Enter your cryptostorm token (or it's SHA512 hash) into the box above that, then click the "ADD KEY" button.
+This page will give you your preshared key and IP, both of which are needed to connect.
+So either save them somewhere, or just don't close this browser tab.
+Back in the WireGuard app, under "Addresses" type in the 10.10.x.x IP this page gave you in the last step.
+For the "DNS servers" part, type in 10.31.33.7 if you want to use our ad/tracker blocking service. Otherwise type in 10.31.33.8
+
+
+When you're done with that, click the
+
+button at the bottom.
+
+Next, you're going to enter the server's information.
+Pick the server you want to connect to from the chart near the top of this page, under "Server public keys".
+Once you have the server, copy it's public key from the chart and paste it into the WireGuard app's "Public key" section (The one under "Peer", not the one under "Interface").
+For the "Pre-shared key" part in the app, you're going to paste the preshared key this page gave you earlier.
+For "Allowed IPs", enter "0.0.0.0/0". If you need to access LAN resources while connected to WireGuard, check the "Exclude private IPs" box.
+Finally, for the "Endpoint", type in the host name of the server that you chose earlier using the same chart you got the server's public key from.
+Add to the end of the host name ":443". WireGuard is UDP only, so it might be better to change that ":443" port to ":53", or ":88".
+You can use any port from 1 to 29999.
+
+
+After you've verified that everything was entered correctly, click the icon at the top right to save the config.
+
+Back on the main screen, simply move the slider button to the right to connect.
+
+
+Check with https://cryptostorm.is/test to verify that your IP has changed.
+
+If you'd like to add more nodes, follow the above steps, but use the same public/private key, PSK, and 10.10.x.x IP as the first configuration.
+Only change the Peer (server)'s public key and the endpoint host name. Those are listed in the chart near the top of this page.
+
+MacOS
+
+Install the WireGuard app from the App Store.
+Once you install/run the app, you'll see the WireGuard logo in the top right corner.
+Click on it and go to "Manage tunnels".
+
+
+On the main "Manage WireGuard Tunnels" window, click the "+" icon in the bottom left, then go to "Add empty tunnel..."
+
+
+In the next window, your Private key and Public key will be generated automatically.
+
+
+Copy the Public key and paste it into the form at the top of this page.
+Enter your cryptostorm token (or it's SHA512 hash) then click the "ADD KEY" button.
+This page will tell you the preshared key (PSK) and IP to use for your configuration.
+Back in the WireGuard app, after the "PrivateKey = whatever" line, add:
+
+Address = (The 10.10.x.x IP provided by this page)
+DNS = 10.31.33.8
+
+[Peer]
+Presharedkey = (The preshared key provided by this page)
+PublicKey = (The server's public key from the chart at the top of this page)
+Endpoint = (The server's host name from the chart at the top of this page):443
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = 25
+
+For example, after entering my cryptostorm token and public key, this page told me to use the PSK "y4Fy5iUOVosTAKSNcNU99Sh4PII1L1SJz2SWQJrjh7Y=" and the IP 10.10.106.203
+So my configuration would look like:
+
+
+The "Name" box at the top can be anything, it's just to help you remember which node this configuration is for.
+The "Endpoint" line and the "PublicKey" line above that is for the Switzerland server, listed in the chart at the top of this page.
+If you'd like to use our ad/tracker blocking DNS service, use the DNS IP 10.31.33.7 instead of 10.31.33.8.
+The "On-Demand" option allows you to only activate the VPN when you're on Ethernet, or only when on Wi-Fi. Leave it as is if you don't want to do that.
+If you need access to LAN resources while on the VPN, check the "Exclude private IPs" option at the bottom left.
+When you're done, click the "Save" button at the bottom right.
+
+If this is your first time adding a WireGuard configuration, you should get this prompt:
+
+Click "Allow" to continue.
+
+Back on the main screen, click the "Activate" button to connect to the VPN.
+
+
+After a few seconds, WireGuard will connect to our server and "Status: Inactive" will change to "Status: Active".
+
+
+That's it! Check with https://cryptostorm.is/test to make sure your IP changed.
+
+If you'd like to switch to another node, repeat the steps above, but use the same private/public key, PSK, and 10.10.x.x IP as the first configuration.
+You can get all of that by clicking the "Edit" button in the bottom right, copying everything, then pasting it into the next configuration.
+Change the "Name:" box at the top and the "Endpoint = " line and the "PublicKey = " to whatever node you want to use.
+The list of endpoints and their public keys are in the chart near the top of this page.
+iOS
+
+You can install the WireGuard app for iOS from the App Store.
+The iPhone we use for testing is too old for WireGuard, so no screenshots.
+But going by the screenshots on the App Store page, it looks similar enough to the Android app, so just use those instructions.
+Windows
+
+Visit https://www.wireguard.com/install/ for the Windows client, at the top of that page.
+Managing tunnels in the Windows client is the same as the MacOS client, so just use those instructions.
+
+
+WireGuard is a registered trademark of Jason A. Donenfeld.

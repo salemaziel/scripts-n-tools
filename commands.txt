@@ -1,0 +1,9 @@
+git clone "https://github.com/protonvpn/protonvpn-cli" && sudo apt install dialog && cd protonvpn-cli/ && sudo ./protonvpn-cli.sh --install 
+
+
+
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - \ && wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - \ && sudo apt update && sudo apt -y full-upgrade && sudo apt install virtualbox-6.0 
+
+wget https://download.virtualbox.org/virtualbox/6.0.0/virtualbox-6.0_6.0.0-127566~Ubuntu~bionic_amd64.deb && sudo gdebi virtualbox-6.0_6.0.0-127566~Ubuntu~bionic_amd64.deb \
+&& wget https://download.virtualbox.org/virtualbox/6.0.0/Oracle_VM_VirtualBox_Extension_Pack-6.0.0.vbox-extpack \
+&& ./Oracle_VM_VirtualBox_Extension_Pack-6.0.0.vbox-extpack

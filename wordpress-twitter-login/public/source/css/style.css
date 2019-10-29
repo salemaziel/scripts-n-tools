@@ -1,0 +1,134 @@
+.btn-social {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    text-align: left;
+    border-radius: 2px;
+    padding-left: 70px;
+    padding-right: 30px;
+    min-width: 230px;
+    transition: opacity 0.3s linear;
+}
+
+.btn-social:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-social i {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: block;
+    text-indent: 0;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-social:focus, .btn-social:active {
+    outline: none;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-social:active {
+    top: 1px;
+}
+
+.btn-facebook {
+    background: #6886bc;
+    background: linear-gradient(to bottom, #6886bc 0%, #466ca9 100%);
+}
+
+.btn-google {
+    background: #e74624;
+    background: linear-gradient(to bottom, #e74624 0%, #b9280a 100%);
+}
+
+.btn-twitter {
+    background-color: #25B6E6;
+    background: linear-gradient(to bottom, #36c9fc 0%, #16aedf 100%);
+}
+
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+#loginform .css-fbl, #loginform .wiloke-twitter-login-css {
+    line-height: 45px;
+    display: block;
+    color: #fff;
+    letter-spacing: 0;
+    margin-bottom: 10px;
+    padding-left: 60px;
+    padding-right: 30px;
+    text-decoration: none;
+    text-transform: capitalize;
+    position: relative;
+    box-sizing: border-box;
+    background: #3b5998 url(../img/icon-facebook.png) no-repeat 20px 50%;
+}
+
+#loginform .wiloke-twitter-login-css {
+    background-color: #25B6E6;
+    background-image: url(../img/icon-twitter.png);
+}
+
+#loginform .css-fbl:before, #loginform .wiloke-twitter-login-css:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 15px;
+    margin: auto;
+    left: 43px;
+    border-left: 1px solid rgba(255,255,255, 0.2);
+}
+
+#loginform .css-fbl:hover, #loginform .css-fbl:focus, #loginform .css-fbl:active, #loginform .wiloke-twitter-login-css:hover, #loginform .wiloke-twitter-login-css:focus, #loginform .wiloke-twitter-login-css:active {
+    text-decoration: none;
+    color: #fff;
+    outline-width: 0;
+    box-shadow: none;
+}
+
+#loginform .css-fbl:focus, #loginform .wiloke-twitter-login-css:focus {
+    top: 1px;
+}
+
+#loginform .css-fbl div, #loginform .wiloke-twitter-login-css div {
+    height: 45px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#loginform .css-fbl img, #loginform .wiloke-twitter-login-css img {
+    display: none;
+    width: 20px;
+    right: 6px;
+    top: 31%;
+    position: absolute;
+    height: auto;
+}
+
+#loginform .css-fbl.fbl-loading img, #loginform .wiloke-twitter-login-css.fbl-loading img{
+    display: block !important;
+}
+
+.fbl_error {
+    float: left;
+    color: red;
+    width: 100%;
+}
+
+#loginform .wiloke-twitter-login-css {
+    background-color: #25B6E6;
+}

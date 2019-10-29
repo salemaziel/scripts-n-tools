@@ -1,0 +1,31 @@
+11
+
+Unfortunately, the previous (since deleted) answer is incorrect and will allow deanonymization because it allows any connection over port 1194, not just traffic originating from OpenVPN. You should use a simpler firewall which does nothing more than block all non-OpenVPN client output to the outside.
+
+If you do not have an openvpn group, create it. The -r makes it a system group.
+
+groupadd -r openvpn
+Once it exists, add this line to your OpenVPN configuration file to run with this group.
+
+group openvpn
+Now you can set the firewall to block output for all processes other than the OpenVPN client. You do not need to specifically whitelist any ports, just the correct group and the TUN device.
+
+# Flush the tables. This may cut the system's internet.
+iptables -F
+
+# Let the VPN client communicate with the outside world.
+iptables -A OUTPUT -j ACCEPT -m owner --gid-owner openvpn
+
+# The loopback device is harmless, and TUN is required for the VPN.
+iptables -A OUTPUT -j ACCEPT -o lo
+iptables -A OUTPUT -j ACCEPT -o tun+
+
+# We should permit replies to traffic we've sent out.
+iptables -A INPUT -j ACCEPT -m state --state ESTABLISHED
+
+# The default policy, if no other rules match, is to refuse traffic.
+iptables -P OUTPUT DROP
+iptables -P INPUT DROP
+If everything worked, you should now have access to the internet only through your VPN. You may need to make some tweaks depending on your particular setup (for example, if you need access to other devices on your local network), but this should be a general solution. In order to make these changes persistent, follow your distribution's instructions on saving firewall settings.
+
+Please understand that VPNs are not designed for privacy or anonymity. Even when using a proper firewall, there are countless ways to circumvent its supposed protections, even if the VPN claims not to keep logs. If you need actual anonymity, you should instead use something like Tor.

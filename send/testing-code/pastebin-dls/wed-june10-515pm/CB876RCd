@@ -1,0 +1,29 @@
+// PrintUnicode.c - input ascii utf8 hex value and prints the corresponding unicode
+// character.
+
+// example - try the following!
+//   echo -n '0xf09f9886' | xargs ./PrintUnicode
+//   Or
+//   ./PrintUnicode f09f9886
+
+#include <stdio.h>              // sscanf, printf
+#include <stdint.h>             // uint32_t, uint8_t
+
+// print RAW byte sequence.
+void printRawBytes (uint8_t* rawBytes, size_t len)
+{
+    // Print backwards since x86 stores data in little-endian.
+    for (size_t i = 0, end = len - 1; i < len; ++i) {
+        printf ("%c", rawBytes[end - i]);
+    }
+}
+
+void main (int argc, char* argv[])
+{
+    uint32_t hex;
+
+    sscanf (argv[1], "%x", &hex);
+
+    printRawBytes ((uint8_t*)&hex, sizeof(hex));
+
+}

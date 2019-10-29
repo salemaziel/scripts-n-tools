@@ -1,0 +1,7 @@
+FROM debian:stretch
+MAINTAINER André Henrique <andre.h.stv@gmail.com>
+
+RUN apt-get update \
+  && apt-get install -y curl wget dnsutils telnet
+
+CMD ["bash"]
