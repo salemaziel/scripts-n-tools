@@ -60,7 +60,12 @@ if [  -n "$(uname -a | grep Ubuntu)" ]; then
         apt-get update
         echo " ** Installing LAMP packages **"
         apt-get --assume-yes install apache2 mysql-server php php-cli libapache2-mod-php php-mysql unzip python-certbot-apache
-        apt-get --assume-yes install php-zip php-xml php-imap php-opcache php-apcu php-memcached php-mbstring php-curl php-amqplib php-mbstring php-bcmath php-intl
+        apt-get --assume-yes install php-zip php-xml php-imap php-opcache php-apcu php-memcached php-mbstring php-curl php-amqplib php-mbstring php-bcmath php-intl libapache2-mod-php php unzip mariadb-server php-xml php-mysql php-imap php-zip php-intl php-curl php-dev libmcrypt-dev php-pear ntp -y
+        
+        sleep 2
+        sudo pecl channel-update pecl.php.net
+        sudo pecl install mcrypt-1.0.3
+
 
 
         x=`lsb_release -rs`
@@ -135,7 +140,18 @@ fi
 
 ### create virtual host rules file
 if ! echo "
-<VirtualHost *:80>
+<VirtualHost 0.0.0.0:80>
+
+    ServerAdmin $email
+    ServerName $domain
+    ServerAlias www.$domain
+    Redirect permanent / https://$domain.com/
+    DocumentRoot $web_root
+
+</VirtualHost>
+
+<VirtualHost 0.0.0.0:443>
+
     ServerAdmin $email
     ServerName $domain
     ServerAlias www.$domain
@@ -151,7 +167,9 @@ if ! echo "
     ErrorLog /var/log/apache2/$domain-error.log
     LogLevel error
     CustomLog /var/log/apache2/$domain-access.log combined
-</VirtualHost>" > $sitesAvailabledomain
+</VirtualHost>
+
+" > $sitesAvailabledomain
 then
     echo -e $"There is an ERROR creating $domain file"
     exit;
